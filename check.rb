@@ -77,14 +77,14 @@ def check_all
       [ false, "Did you install the `gist` gem and run `gist --login`?"]
     end
   end
-  # check("git email setup") do
-  #   email = `git config --global user.email`.strip
-  #   if email && email.match(VALID_EMAIL_REGEX)
-  #     [ true, "Please manually check that `#{email}` is set at https://github.com/settings/emails - Did you confirm it?" ]
-  #   else
-  #     [ false, "Could not find an email in your git setup. Check your dotfiles"]
-  #   end
-  # end
+   check("git email setup") do
+     email = `git config --global user.email`.strip
+     if email && email.match(VALID_EMAIL_REGEX)
+       [ true, "Please manually check that `#{email}` is set at https://github.com/settings/emails - Did you confirm it?" ]
+     else
+       [ false, "Could not find an email in your git setup. Check your dotfiles"]
+     end
+   end
   check("git editor setup") do
     editor = `git config --global core.editor`
     if editor.match(/subl/i)
